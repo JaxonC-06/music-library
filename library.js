@@ -37,6 +37,9 @@ const printPlaylists = function(object) {
        }
 };
 
+// Test
+// console.log(printPlaylists(library));
+
 // prints a list of all tracks, using the following format:
 // t01: Code Monkey by Jonathan Coulton (Thing a Week Three)
 // t02: Model View Controller by James Dempsey (WWDC 2003)
@@ -47,6 +50,9 @@ const printTracks = function(object) {
               console.log(`${track.id}: ${track.name} by ${track.artist} (${track.album})`);
        }
 };
+
+// Test
+// console.log(printTracks(library));
 
 // prints a list of tracks for a given playlist, using the following format:
 // p01: Coding Music - 2 tracks
@@ -61,17 +67,27 @@ const printPlaylist = function(playlistId) {
               }
 }
 
+// Test
+// console.log(printPlaylist("p01"));
+
 // adds an existing track to an existing playlist
 const addTrackToPlaylist = function(trackId, playlistId) {
        const playlist = library.playlists[playlistId];
        playlist.tracks.push(trackId);
 };
 
+// Test - Add a track, verify with console log.
+// addTrackToPlaylist("t01", "p02");
+// console.log(library.playlists);
+
 // generates a unique id
 // (already implemented: use this for addTrack and addPlaylist)
 const generateUid = function() {
   return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
 }
+
+// Test
+// console.log(generateUid());
 
 // adds a track to the library
 const addTrack = function(name, artist, album) {
@@ -86,11 +102,25 @@ const addTrack = function(name, artist, album) {
        library.tracks[trackId] = track;
 };
 
+// Test
+// addTrack("Never Gonna Give You Up", "Rick Astley", "Greatest of Rick Astley");
+// console.log(library.tracks);
+
 // adds a playlist to the library
 const addPlaylist = function(name) {
+       const playlistId = generateUid();
+       const playlist = {
+              "id": playlistId,
+              "name": name,
+              "tracks": []
+       };
 
-}
+       library.playlists[playlistId] = playlist;
+};
 
+// Tests
+// addPlaylist("Chill Tunes"); 
+// console.log(library.playlists);
 
 // STRETCH:
 // given a query string string, prints a list of tracks
