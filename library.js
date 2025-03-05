@@ -73,12 +73,18 @@ const generateUid = function() {
   return Math.floor((1 + Math.random()) * 0x10000).toString(16).substring(1);
 }
 
-
 // adds a track to the library
 const addTrack = function(name, artist, album) {
+       const trackId = generateUid();
+       const track = {
+              "id": trackId,
+              "name": name,
+              "artist": artist,
+              "album": album
+       };
 
-}
-
+       library.tracks[trackId] = track;
+};
 
 // adds a playlist to the library
 const addPlaylist = function(name) {
