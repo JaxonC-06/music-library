@@ -55,13 +55,11 @@ const printTracks = function(object) {
 const printPlaylist = function(playlistId) {
               const playlist = library.playlists[playlistId];
               console.log(`${playlist.id}: ${playlist.name} - ${playlist.tracks.length} tracks`);
-              for (const track of playlist.tracks) {
-                     if (track === library.tracks) {
-                            console.log(`${track.id}: ${track.name} by ${track.artist} (${track.album})`);
-                     }
+              for (const trackId of playlist.tracks) {
+                     const track = library.tracks[trackId];
+                     console.log(`${track.id}: ${track.name} by ${track.artist} (${track.album})`);
               }
 }
-printPlaylist("p01")
 
 // adds an existing track to an existing playlist
 const addTrackToPlaylist = function(trackId, playlistId) {
